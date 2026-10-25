@@ -1,0 +1,35 @@
+name: Publish Still Web Clip Test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'still-site.zip.*'
+      - 'still-site-manifest.json'
+      - 'restore_site.py'
+      - '.github/workflows/webclip-publish.yml'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: still-pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and restore offline application
+        run: python3 restore_site.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4
