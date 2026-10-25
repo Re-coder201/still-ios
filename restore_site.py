@@ -24,10 +24,10 @@ assert (target/'index.html').is_file() and (target/'sw.js').is_file()
 assert (target/'still.mobileconfig').is_file()
 print('Verified and restored all offline application files.')
 
-# Apply the verified 1.5.4 Apple translation-stability update.
+# Install the verified 1.5.5 precomputed reading translations and Apple adapter.
 patch=root/'still-pwa-update.zip'
 assert patch.is_file(), 'Upload still-pwa-update.zip together with restore_site.py'
-assert hashlib.sha256(patch.read_bytes()).hexdigest() == '1f33b79b0dfb6b34022b27bbc1b93a1d3e058a4ed712d296d107f0ded09643bd', 'Update package checksum mismatch'
+assert hashlib.sha256(patch.read_bytes()).hexdigest()=='25ddf0a8aaa82224c4fbea828d12646dac0c55a245a1cdaeabd860ee8bfa00e2', 'Update package checksum mismatch'
 with zipfile.ZipFile(patch) as z:
  assert z.testzip() is None
  for item in z.infolist():
@@ -37,8 +37,9 @@ with zipfile.ZipFile(patch) as z:
  z.extractall(target)
 content=(target/'offline-manifest.js').read_text(encoding='utf-8')
 offline=json.loads(content.removeprefix('const OFFLINE_MANIFEST=').strip().removesuffix(';'))
-assert offline['version']=='1.5.4-pwa.1'
+assert offline['version']=='1.5.5-pwa.1'
 for item in offline['files']:
  data=(target/item['path']).read_bytes()
  assert len(data)==item['bytes'] and hashlib.sha256(data).hexdigest()==item['sha256'], item['path']
-print('Verified 1.5.4: Apple uses safe local/cached reading translations without loading the large translation model.')
+assert (target/'reading-translation-library/index.json').is_file()
+print('Verified 1.5.5: prepared reading translations; no large translation model on iPhone/iPad.')
