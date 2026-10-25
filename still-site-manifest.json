@@ -1,0 +1,66 @@
+{
+  "version": "1.5.1-pwa.1",
+  "archiveSHA256": "729691a9781f1249c1707b6cf68fb59b1149d3739cc79e85d240631384433615",
+  "parts": [
+    {
+      "name": "still-site.zip.001",
+      "bytes": 10485760,
+      "sha256": "460ee73ded865325d18c696843b7ecf14c76dd9858b73eeab20cc9ec3846bb74"
+    },
+    {
+      "name": "still-site.zip.002",
+      "bytes": 10485760,
+      "sha256": "1971d3718002a2e4083f8081c37a571f5a65d83ad4c89452395907c060f60b4b"
+    },
+    {
+      "name": "still-site.zip.003",
+      "bytes": 10485760,
+      "sha256": "83422d893e28bd1594074e29cf89a5edc633da410d045a18ca08ce0a2699460a"
+    },
+    {
+      "name": "still-site.zip.004",
+      "bytes": 10485760,
+      "sha256": "732b17b0a7d9aba6ab7c5bfcee18ce8e2b48939f23b9b320b1e91a0020e32a56"
+    },
+    {
+      "name": "still-site.zip.005",
+      "bytes": 10485760,
+      "sha256": "01f61598e4958db2a62f8fbd5d830c105a47dd0da42cff47c5abd372eb31af0e"
+    },
+    {
+      "name": "still-site.zip.006",
+      "bytes": 10485760,
+      "sha256": "d3f8f095d2f50c8d84030892e369446fdfa1679c0dc3aba4510630880139adf5"
+    },
+    {
+      "name": "still-site.zip.007",
+      "bytes": 10485760,
+      "sha256": "26c92bb6a98b70619ce30dda48a948c90ff5b9a5edb52f789362ac657a12ea8a"
+    },
+    {
+      "name": "still-site.zip.008",
+      "bytes": 10485760,
+      "sha256": "dd481b7aded8afd7aac18f0aefa424d441b57a55cbda711d1741c87f3f4f1e24"
+    },
+    {
+      "name": "still-site.zip.009",
+      "bytes": 10485760,
+      "sha256": "9e66de30236ae0f31945f885a91ede2b02d5236f13639d530f2e1ee0f454d274"
+    },
+    {
+      "name": "still-site.zip.010",
+      "bytes": 10485760,
+      "sha256": "5e405d430f0545cf6d06d6c1a7d4ab03d95db0910a9273baa8ce22521a0434aa"
+    },
+    {
+      "name": "still-site.zip.011",
+      "bytes": 10485760,
+      "sha256": "7c9387401e36ac0a463ee6e393bdfa284d5770475fa79c279cc31147ff04cb79"
+    },
+    {
+      "name": "still-site.zip.012",
+      "bytes": 6978304,
+      "sha256": "cb7d3151ffc04223b202ae1658f68fd04322ef9ecaf3138ec9886d0f3a2f785b"
+    }
+  ]
+}
