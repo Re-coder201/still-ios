@@ -24,10 +24,10 @@ assert (target/'index.html').is_file() and (target/'sw.js').is_file()
 assert (target/'still.mobileconfig').is_file()
 print('Verified and restored all offline application files.')
 
-# Apply the verified 1.5.2 dictionary update after restoring the original site.
+# Apply the verified 1.5.3 dictionary update after restoring the original site.
 patch=root/'still-pwa-update.zip'
 assert patch.is_file(), 'Upload still-pwa-update.zip together with restore_site.py'
-assert hashlib.sha256(patch.read_bytes()).hexdigest() == '538b4481d35b4866a227a77f1fa2e02d187951d3e8d65e1dfda05ac247a84cca', 'Update package checksum mismatch'
+assert hashlib.sha256(patch.read_bytes()).hexdigest() == '33ca35c63843d66bd1fcb4afb2876778c5536ce60b3909ce293c5cb27206e79b', 'Update package checksum mismatch'
 with zipfile.ZipFile(patch) as z:
  assert z.testzip() is None
  for item in z.infolist():
@@ -37,8 +37,8 @@ with zipfile.ZipFile(patch) as z:
  z.extractall(target)
 content=(target/'offline-manifest.js').read_text(encoding='utf-8')
 offline=json.loads(content.removeprefix('const OFFLINE_MANIFEST=').strip().removesuffix(';'))
-assert offline['version']=='1.5.2-pwa.1'
+assert offline['version']=='1.5.3-pwa.1'
 for item in offline['files']:
  data=(target/item['path']).read_bytes()
  assert len(data)==item['bytes'] and hashlib.sha256(data).hexdigest()==item['sha256'], item['path']
-print('Verified 1.5.2: all 399,213 dictionary entries restored.')
+print('Verified 1.5.3: all 399,213 dictionary entries restored.')
