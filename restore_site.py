@@ -24,10 +24,10 @@ assert (target/'index.html').is_file() and (target/'sw.js').is_file()
 assert (target/'still.mobileconfig').is_file()
 print('Verified and restored all offline application files.')
 
-# Apply the complete verified 1.5.7 update over the original site.
+# Apply the complete verified 1.5.8 update over the original site.
 patch=root/'still-pwa-update.zip'
 assert patch.is_file(), 'Upload still-pwa-update.zip together with restore_site.py'
-assert hashlib.sha256(patch.read_bytes()).hexdigest()=='81bc189696954b78dccf713c38a62daa421c59d5412957d64de800fb8b0b13f7', 'Update package checksum mismatch'
+assert hashlib.sha256(patch.read_bytes()).hexdigest()=='c4e8f200748fa40e0168ad19c5849464c65423d1764927cd4bae0ce30364bc52', 'Update package checksum mismatch'
 with zipfile.ZipFile(patch) as z:
  assert z.testzip() is None
  for item in z.infolist():
@@ -37,9 +37,9 @@ with zipfile.ZipFile(patch) as z:
  z.extractall(target)
 content=(target/'offline-manifest.js').read_text(encoding='utf-8')
 offline=json.loads(content.removeprefix('const OFFLINE_MANIFEST=').strip().removesuffix(';'))
-assert offline['version']=='1.5.7-pwa.1'
+assert offline['version']=='1.5.8-pwa.1'
 for item in offline['files']:
  data=(target/item['path']).read_bytes()
  assert len(data)==item['bytes'] and hashlib.sha256(data).hexdigest()==item['sha256'], item['path']
 assert (target/'search-history.js').is_file() and (target/'learning-time.js').is_file()
-print('Verified 1.5.7: dynamic update checking feedback, search history, learning duration and precomputed Apple reading translations.')
+print('Verified 1.5.8: stronger review score reductions, direct pure-word search, dynamic update checking feedback and prior features.')
